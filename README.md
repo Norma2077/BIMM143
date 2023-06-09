@@ -16,3 +16,5 @@ This is my repository for my BIoinformatic class from San Diego SP23.
 
 
 
+### Support and Contact
+Having troubles with pages? Check out our [documentation](http://github.com/contact) and we'll help you sort it out.
