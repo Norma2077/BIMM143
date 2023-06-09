@@ -1,0 +1,137 @@
+---
+title: "class 09"
+author: "Yinuo Song"
+format: pdf
+---
+
+## PDB statistics
+
+To read the csv file downloaded from PDB, we are going to use the command "`read.csv`"
+
+```{r}
+pdb_stats <- read.csv('Data Export Summary.csv',row.names=1)
+```
+
+Q1 What percentage of structures in the PDB are solved by X-Ray and Electron Microscopy?
+
+I need to sum all the elements of the x-ray column
+
+```{r}
+as.numeric(gsub(",","",pdb_stats$X.ray))
+```
+
+```{r}
+n_xray <- sum(as.numeric(gsub(",","",pdb_stats$X.ray)))
+n_em <- sum(as.numeric(gsub(",","",pdb_stats$EM)))
+n_total <- sum(as.numeric(gsub(",","",pdb_stats$Total)))
+```
+
+```{r}
+(n_xray+n_em)/n_total
+
+```
+
+92.99 percentage of structures in the PDB are solved by X-Ray and Electron Microscopy?
+
+Q2 What proportion of structures in the PDB are protein?
+
+```{r}
+total_protein <- as.numeric(gsub(",","",pdb_stats[1,7]))
+```
+
+Protein
+
+```{r}
+total_protein/n_total
+```
+
+86.81 percentage of structures in the PDB are protein.
+
+Q3 Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?
+
+There are 5 structures in the current PDB.
+
+# 2. Visualizing the HIV-1 protease structure
+
+figure 1
+
+![](1HSG.png)
+
+figure 2( Asp 25)
+
+![](images/1HSG%20(1).png){width="635"}
+
+**Q6**: Generate and save a figure clearly showing the two distinct chains of HIV-protease along with the ligand. You might also consider showing the catalytic residues ASP 25 in each chain and the critical water (we recommend *"Ball & Stick"* for these side-chains). Add this figure to your Quarto document.
+
+Figure 3
+
+![](images/1HSG%20(2).png)
+
+**Q4**: Water molecules normally have 3 atoms. Why do we see just one atom per water molecule in this structure?
+
+Because the structure of a water molecule compared to an amino acid structure is too small.
+
+**Q5**: There is a critical "conserved" water molecule in the binding site. Can you identify this water molecule? What residue number does this water molecule have
+
+The water molecule highlighted in figure 3 is HOH 308.
+
+# 3. Introduction to Bio3D in R
+
+```{r}
+library(bio3d)
+```
+
+```{r}
+pdb <- read.pdb("1hsg")
+```
+
+```{r}
+attributes(pdb)
+```
+
+```{r}
+pdb
+```
+
+**Q7:** How many amino acid residues are there in this pdb object?
+
+198
+
+**Q8:** Name one of the two non-protein residues?
+
+nucleic Atoms
+
+**Q9:** How many protein chains are in this structure?
+
+2
+
+```{r}
+head(pdb$atom)
+```
+
+# Predicting functional motions of a single structure by NMA
+
+```{r}
+adk <- read.pdb('6s36')
+```
+
+```{r}
+adk
+
+```
+
+```{r}
+m <- nma(adk)
+```
+
+```{r}
+plot(m)
+```
+
+```{r}
+mktrj(m,file="adk_m7.pdb")
+```
+
+View the file in Mol Viewer
+
+![](6S36-ADK_M7.PDB.png)
