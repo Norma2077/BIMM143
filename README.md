@@ -1,4 +1,4 @@
-## Bioinformatic lab class
+# Bioinformatic lab class
 This is my repository for my BIoinformatic class from San Diego SP23.
 
 ## Index of Material
@@ -13,3 +13,6 @@ This is my repository for my BIoinformatic class from San Diego SP23.
 - Class17:[Vaccination rate mini-project](https://github.com/Norma2077/BIMM143/blob/6a5afdfbb361b9ccf26069a3ac6fc8556444a769/class%2017%20Mini%20project/class17.pdf)
 - Class18:[Mutational signatures of cancer mini-project](https://github.com/Norma2077/BIMM143/blob/6a5afdfbb361b9ccf26069a3ac6fc8556444a769/class18/class18.pdf)
 - Class19:[Pertussis resurgence mini-project](https://github.com/Norma2077/BIMM143/blob/6a5afdfbb361b9ccf26069a3ac6fc8556444a769/class19/class19.pdf)
+
+
+
